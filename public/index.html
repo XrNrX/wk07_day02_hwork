@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Beer Homework</title>
+	<script src="./js/bundle.js"></script>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+	<h1>Beer Homework</h1>
+<div id="container">
+	<div id="app">
+
+		<label for="beer_select">Please Pick a Beer!</label>
+		<select v-on:change="findBeer" id="beer_select" v-model="beerByIndex">
+			<option disabled value=''>Select a Beer Pweease!</option>
+			<option>Pick a Beer</option>
+			<option v-for="(beer, index) in beers" :value="index"> {{ beer.name }} </option>
+		</select>
+
+		<div id="beer_select" v-if="selectedBeer">
+			<h2> {{ selectedBeer.name }} </h2>
+			<p> {{ selectedBeer.description }} </p>
+			<img :src="selectedBeer.image_url" :alt="selectedBeer" height="600" width="250" /></br>
+			<button v-on:click="addFavouriteBeer">Add Your Favourite!!!</button>
+		</div>
+
+		<div v-for="(beer, index) in favouriteBeer" :value="index">
+			<h2> {{ selectedBeer.name }} </h2>
+			<button v-on:click="removeBeer">Remove Your Beer!!</button>
+		</div>
+
+
+	</div>
+</div>
+</body>
+</html>
